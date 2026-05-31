@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Actualizar Notas{% endblock %}
+{% block body_attrs %}bgcolor="yellow"{% endblock %}
+{% block content %}
+<h1>Actualizar Notas de Alumno</h1>
+
+{% if mensaje %}
+<p><b>{{ mensaje }}</b></p>
+{% endif %}
+
+<form method="post" action="/actualizar_notas">
+    <label>Alumno:</label>
+    <select name="alumno_id">
+        {% for a in alumnos %}
+        <option value="{{ a.id }}">{{ a.nombre }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <label>Nota 1 (0-10):</label>
+    <input type="number" name="nota1" min="0" max="10" required>
+    <br><br>
+    <label>Nota 2 (0-10):</label>
+    <input type="number" name="nota2" min="0" max="10" required>
+    <br><br>
+    <label>Nota 3 (0-10):</label>
+    <input type="number" name="nota3" min="0" max="10" required>
+    <br><br>
+    <input type="submit" value="Actualizar Notas">
+</form>
+{% endblock %}

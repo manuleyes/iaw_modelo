@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Cambiar Nombre{% endblock %}
+{% block body_attrs %}bgcolor="blue"{% endblock %}
+{% block content %}
+<h1>Cambiar Nombre de Alumno</h1>
+<p>(Solo se puede cambiar el nombre de alumnos sin notas suspendidas)</p>
+
+{% if mensaje %}
+<p><b>{{ mensaje }}</b></p>
+{% endif %}
+
+{% if alumnos %}
+<form method="post" action="/cambiar_nombre">
+    <label>Alumno:</label>
+    <select name="alumno_id">
+        {% for a in alumnos %}
+        <option value="{{ a.id }}">{{ a.nombre }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <label>Nuevo nombre:</label>
+    <input type="text" name="nuevo_nombre" required>
+    <br><br>
+    <input type="submit" value="Cambiar Nombre">
+</form>
+{% else %}
+<p>No hay alumnos con todas las notas aprobadas.</p>
+{% endif %}
+{% endblock %}

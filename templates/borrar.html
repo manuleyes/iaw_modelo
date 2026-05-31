@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Borrar Alumno{% endblock %}
+{% block body_attrs %}bgcolor="blue"{% endblock %}
+{% block content %}
+<h1>Borrar Alumno</h1>
+<p>(Solo se pueden borrar alumnos con todas las notas aprobadas)</p>
+
+{% if mensaje %}
+<p><b>{{ mensaje }}</b></p>
+{% endif %}
+
+{% if alumnos %}
+<form method="post" action="/borrar">
+    <label>Alumno:</label>
+    <select name="alumno_id">
+        {% for a in alumnos %}
+        <option value="{{ a.id }}">{{ a.nombre }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <input type="submit" value="Borrar Alumno">
+</form>
+{% else %}
+<p>No hay alumnos con todas las notas aprobadas para borrar.</p>
+{% endif %}
+{% endblock %}

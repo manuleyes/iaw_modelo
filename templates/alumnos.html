@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Listado de Alumnos{% endblock %}
+{% block body_attrs %}bgcolor="blue"{% endblock %}
+{% block content %}
+<h1>Listado de Alumnos</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Nota 1</th>
+        <th>Nota 2</th>
+        <th>Nota 3</th>
+    </tr>
+    {% for a in alumnos %}
+    <tr>
+        <td>{{ a.id }}</td>
+        <td>{{ a.nombre }}</td>
+        <td>
+            {% if a.nota1 < 5 %}<font color="red">{{ a.nota1 }}</font>{% else %}{{ a.nota1 }}{% endif %}
+        </td>
+        <td>
+            {% if a.nota2 < 5 %}<font color="red">{{ a.nota2 }}</font>{% else %}{{ a.nota2 }}{% endif %}
+        </td>
+        <td>
+            {% if a.nota3 < 5 %}<font color="red">{{ a.nota3 }}</font>{% else %}{{ a.nota3 }}{% endif %}
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">No hay alumnos.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

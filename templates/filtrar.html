@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Filtrar por Media{% endblock %}
+{% block body_attrs %}bgcolor="yellow"{% endblock %}
+{% block content %}
+<h1>Filtrar Alumnos por Media</h1>
+<form method="post" action="/filtrar">
+    <label>Mostrar alumnos con media mayor que:</label>
+    <input type="number" name="numero" step="0.01" min="0" max="10"
+           value="{{ numero if numero is not none else '' }}" required>
+    <input type="submit" value="Buscar">
+</form>
+
+{% if alumnos is not none %}
+    <h2>Resultados (media &gt; {{ numero }})</h2>
+    {% if alumnos %}
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Nota 3</th>
+            <th>Media</th>
+        </tr>
+        {% for a in alumnos %}
+        <tr>
+            <td>{{ a.id }}</td>
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.nota1 }}</td>
+            <td>{{ a.nota2 }}</td>
+            <td>{{ a.nota3 }}</td>
+            <td>{{ ((a.nota1 + a.nota2 + a.nota3) / 3) | round(2) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No hay alumnos con media mayor que {{ numero }}.</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

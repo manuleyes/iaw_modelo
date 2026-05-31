@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Alumnos{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/table.css">
+</head>
+<body {% block body_attrs %}{% endblock %}>
+    <nav>
+        <a href="/alumnos">Listado de Alumnos</a>
+        <a href="/filtrar">Filtrar por Media</a>
+        <a href="/cambiar_nombre">Cambiar Nombre</a>
+        <a href="/actualizar_notas">Actualizar Notas</a>
+        <a href="/borrar">Borrar Alumno</a>
+    </nav>
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
