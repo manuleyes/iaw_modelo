@@ -1,4 +1,4 @@
-"""
+**
 7) FastAPI - Enunciado y estructura del proyecto
 
 Tenemos una base de datos MySQL con la tabla Alumnos, que tiene un alumno y 3 notas.
@@ -43,4 +43,4 @@ Funcionalidad:
 - Todas las rutas usan plantillas HTML y el menú está siempre visible.
 - Los colores de fondo se asignan según el enunciado usando el atributo bgcolor en cada template.
 - El acceso a la base de datos está centralizado en DaoAlumnos.
-"""
+  **
